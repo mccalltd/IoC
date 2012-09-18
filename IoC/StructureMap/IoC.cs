@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.Practices.ServiceLocation;
 using SignalR;
 using StructureMap;
@@ -40,7 +41,10 @@ namespace IoC.StructureMap
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapHttpDependencyResolver(container);
 
             // SignalR dependency resolver
+            // NOTE: The hub route is automatically added at a very early stage in the application (PreApplicationStart) 
+            // so we need to remap it to use the new default resolver.
             GlobalHost.DependencyResolver = new StructureMapSignalRDependencyResolver(container);
+            RouteTable.Routes.MapHubs();
         }
     }
 }
