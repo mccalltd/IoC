@@ -1,6 +1,16 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
+# Ignore build output
+bin/
+obj/
 
-# mstest test results
-TestResults
+# Ignore resharper settings
+_ReSharper.*
+*.ReSharper.user
+
+# Ignore project and solution settings
+*.csproj.user
+*.user
+*.suo
+*.cache
+
+** Ignore certain dirs in projects
+packages/
